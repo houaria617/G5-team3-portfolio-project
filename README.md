@@ -1,2 +1,6 @@
 # G5-team3-portfolio-project
-Repository for Programming Assignment 1 – Software Engineering TD 2 (Team G5‑team3 – Team Portfolio Website Project).
+Team members' names with their Github usernames:
+Djabir Houaria:
+Haddoud Mehdi: MehdiHaddoud701
+Sekfali Ines: Ines-Sekfali
+Meriche Yasmine: yasminemeriche
