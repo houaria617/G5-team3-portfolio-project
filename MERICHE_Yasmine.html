@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crochet Artist Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fce8f0;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(252, 232, 240, 0.95);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e91e63;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 50px 80px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 900;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #888;
+            max-width: 800px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #f8a5c2;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #f78fb3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(248, 165, 194, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #e91e63;
+            border: 2px solid #e91e63;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e91e63;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 56px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            text-align: center;
+            color: #888;
+            margin-bottom: 60px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #f8a5c2, #f3c4d8);
+            border-radius: 15px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  /* ensures it fills the space without distortion */
+            display: block;
+        }
+
+        .about-text h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background-color: #fce8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .about-text p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .education-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .education-card-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .education-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #f8a5c2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+        }
+
+        .education-card h3 {
+            font-size: 32px;
+            color: #333;
+        }
+
+        .education-card h4 {
+            font-size: 18px;
+            color: #e91e63;
+            margin-bottom: 15px;
+        }
+
+        .education-card p {
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .skill-card {
+            text-align: center;
+        }
+
+        .skill-icon {
+            width: 120px;
+            height: 120px;
+            background-color: #f8a5c2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 48px;
+            color: white;
+        }
+
+        .skill-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .skill-card p {
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* My Work Section */
+        .work-intro {
+            text-align: center;
+            color: #888;
+            margin-bottom: 50px;
+            font-size: 18px;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .work-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .work-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f8a5c2, #f3c4d8);
+        }
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* fills the box while keeping proportions */
+            display: block;
+        }
+
+        .work-card-content {
+            padding: 30px;
+        }
+
+        .work-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .work-card p {
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .work-about {
+            background-color: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .work-about h3 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .work-about p {
+            color: #888;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Exhibitions Section */
+        .exhibition-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .exhibition-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .exhibition-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #6b5b95, #d4c5e0);
+        }
+        .exhibition-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;  /* makes the image fill the box without distortion */
+            display: block;
+        }
+
+        .exhibition-content {
+            padding: 30px;
+        }
+
+        .exhibition-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .exhibition-content p {
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .exhibition-note {
+            text-align: center;
+            color: #888;
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            padding: 100px 50px;
+        }
+
+        .contact h2 {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .contact-subtitle {
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 60px;
+        }
+
+        .contact-box {
+            background-color: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .social-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #f8a5c2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background-color: #f78fb3;
+            box-shadow: 0 5px 15px rgba(248, 165, 194, 0.4);
+        }
+
+        .contact-box h3 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .contact-box p {
+            color: #888;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .contact-item span {
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .about-content,
+            .education-grid,
+            .skills-grid,
+            .work-grid,
+            .exhibition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 50px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#work">My Work</a></li>
+            <li><a href="#exhibitions">Exhibitions</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Blending artistry with technology.</h1>
+        <p>Welcome to a space where handmade artistry meets modern technology<br>transforming yarn and ideas into meaningful creations.</p>
+        <div class="cta-buttons">
+            <a href="#work" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">The person behind the creations</p>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="./images/profile final.jpg">
+            </div>
+            <div class="about-text">
+                <h3>Hello, I'm MERICHE Yasmine</h3>
+                <div class="info-item">
+                    <div class="icon-circle">🎂</div>
+                    <span>19 years old</span>
+                </div>
+                <div class="info-item">
+                    <div class="icon-circle">📍</div>
+                    <span>Hussein Dey, Algiers</span>
+                </div>
+                <p>I’m a crochet artist and tech enthusiast who believes creativity thrives where art meets innovation. What started as a simple hobby grew into a creative venture and a deeper curiosity for how technology can enhance craftsmanship.</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">My Educational Journey</h2>
+        <p class="section-subtitle">Building a foundation in creativity and design</p>
+        <div class="education-grid">
+            <div class="education-card">
+                <div class="education-card-header">
+                    <div class="education-icon">🎓</div>
+                    <h3>ENSIA</h3>
+                </div>
+                <h4>September 2023 --- Present</h4>
+                <p>The National Higher School of Artificial Intelligence </p>
+            </div>
+            <div class="education-card">
+                <div class="education-card-header">
+                    <div class="education-icon">📚</div>
+                    <h3>Baccalaureate Degree </h3>
+                </div>
+                <h4>LTA ( lycée technique d'Alger Ibn El Haithem ): June 2023</h4>
+                <p>Baccaluate degree in Mathematics </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">My Skills & Expertise</h2>
+        <p class="section-subtitle"></p>
+        <div class="skills-grid">
+            <div class="skill-card">
+                
+                <h2>Crochet Techniques</h2>
+                
+            </div>
+            <div class="skill-card">
+                <h2>Handmade jewelry creation</h2>
+            </div>
+            <div class="skill-card">
+                
+                <h2>Creative Design</h2>
+               
+            </div>
+            <div class="skill-card">
+               
+                <h2>Python</h2>
+               
+            </div>
+            <div class="skill-card">
+               <h2>SQL</h2>
+            </div>
+            <div class="skill-card">
+                <h2>Arduino</h2>
+            </div>
+            <div class="skill-card">
+                <h2>C++</h2>
+            </div>
+            <div class="skill-card">
+                <h2>OOP</h2>
+            </div>
+            <div class="skill-card">
+                <h2>Mobile Development</h2>
+            </div>
+            <div class="skill-card">
+                <h2>Software Engineering</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Work Section -->
+    <section id="work">
+        <h2 class="section-title">Social Impact</h2>
+        
+        
+        <div class="work-grid">
+            <div class="work-card">
+                <div class="work-image">
+                    <img src="images/profile_2.jpg">
+                </div>
+                <div class="work-card-content">
+                    <h3>Wejehni 1 & 2</h3>
+                    <p>Wejehni is a youth initiative that guides and inspires students in their academic and career paths.</p>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="work-image">
+                    <img src="images/unibook.png">
+                </div>
+                <div class="work-card-content">
+                    <h3>UniBook dz</h3>
+                    <p>Unibook is a student-focused page that provides academic resources to save time and offer clear guidance.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="work-about">
+            <h3>About My Business</h3>
+            <p>What started as a passion has grown into a small business dedicated to creating beautiful, handmade crochet pieces. Every creation is made with love, using high-quality materials and attention to detail. I specialize in floral arrangements, decorative items, and custom pieces that bring warmth and personality to any space.</p>
+        </div>
+    </section>
+
+    <!-- Exhibitions Section -->
+    <section id="exhibitions">
+        <h2 class="section-title">Exhibition Gallery</h2>
+        <p class="section-subtitle">Moments from events where I've had the opportunity to share my work with the community</p>
+        
+        <div class="exhibition-grid">
+            <div class="exhibition-card">
+                <div class="exhibition-image">
+                    <img src="./images/exhibition1.jpg">
+                </div>
+                <div class="exhibition-content">
+                    <h3>Psych & Power (February 19th, 2025)</h3>
+                    <p>By Algenius club ( ENSTA )</p>
+                   
+                </div>
+            </div>
+            <div class="exhibition-card">
+                <div class="exhibition-image">
+                    <img src="./images/exhibition2.jpg">
+                </div>
+                <div class="exhibition-content">
+                    <h3>Start Small (February 27th, 2025)</h3>
+                    <p>By Project initiative (USTHB)</p>
+                </div>
+            </div>
+            <div class="exhibition-card">
+                <div class="exhibition-image">
+                    <img src="./images/exhibition3.jpg">
+                </div>
+                <div class="exhibition-content">
+                    <h3>ARTIFEX (June 18th, 2025)</h3>
+                    <p>By Hope club </p>
+                </div>
+
+            </div>
+        </div>
+        
+        
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Let's Connect</h2>
+        <p class="contact-subtitle">For inquiries regarding custom orders or collaboration opportunities, please feel free to get in touch.</p>
+        
+        <div class="contact-box">
+            <div class="social-icons">
+                <div class="social-icon">✉️</div>
+                <div class="social-icon">📷</div>
+                <div class="social-icon">❤️</div>
+            </div>
+            
+            <h3>Get in Touch</h3>
+            <p>For inquiries related to crochet pieces, custom commissions, or collaborative projects combining craftsmanship and technology, please reach out via your preferred communication platform.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>Email: yasmine.meriche@ensia.edu.dz</span>
+                </div>
+                <div class="contact-item">
+                    <span>🌐</span>
+                    <span>Linkedin: Yasmine MERICHE</span>
+                </div>
+                <div class="contact-item">
+                    <span>💖</span>
+                    <span>Instagram: yasmine.s_corner</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
