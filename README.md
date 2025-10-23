@@ -10,6 +10,9 @@
 | Meriche Yasmine | [yasminemeriche](https://github.com/yasminemeriche) |
 
 ---
+---
+## THe Link to the deployed website:
+(https://houaria617.github.io/G5-team3-portfolio-project/)
 
 ## Team Retrospective Analysis
 
