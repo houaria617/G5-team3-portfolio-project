@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Members</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Changed font */
+            margin: 0;
+            padding: 20px;
+            background-color: #e0f2f7;
+            /* Lighter, cooler background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            /* Slightly smaller cards */
+            gap: 25px;
+            /* Increased gap */
+            max-width: 1000px;
+            /* Slightly narrower max width */
+            width: 100%;
+        }
+
+        .card {
+            background-color: #ffffff;
+            /* White card background */
+            border-radius: 12px;
+            /* More rounded corners */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            /* Stronger shadow */
+            padding: 25px;
+            /* Increased padding */
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            /* Smooth transitions */
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            /* More pronounced lift on hover */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            /* Stronger shadow on hover */
+        }
+
+        .card h2 {
+            margin: 0;
+            /* Remove top/bottom margin from h2 */
+            padding-bottom: 0;
+            /* Ensure no extra space below the name */
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #007bff;
+            /* Consistent link color */
+            font-weight: 600;
+            /* Slightly bolder font */
+            font-size: 1.5em;
+            /* Larger font for names */
+            display: block;
+            /* Make the link fill the h2 area for easier clicking */
+            padding: 5px 0;
+            /* Add a little vertical padding to the clickable area */
+        }
+
+        .card a:hover {
+            color: #0056b3;
+            /* Darker blue on hover */
+            text-decoration: none;
+            /* Keep underline removed */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h2><a href="houaria-djabir.html">Djabir Houaria</a></h2>
+        </div>
+        <div class="card">
+            <h2><a href="MERICHE_Yasmine.html">Meriche Yasmine</a></h2>
+        </div>
+        <div class="card">
+            <h2><a href="ines-sekfali.html">Sekfali Ines</a></h2>
+        </div>
+        <div class="card">
+            <h2><a href="mehdi-haddoud.html">Mehdi Haddoud</a></h2>
+        </div>
+    </div>
+</body>
+
+</html>
