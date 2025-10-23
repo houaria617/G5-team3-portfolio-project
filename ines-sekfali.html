@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ines Sekfali - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #e8e6e3;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #d4d1cc 0%, #e8e6e3 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        .first-name {
+            display: block;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .last-name {
+            display: block;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #666;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Scroll Animation Classes */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .scroll-animate.animate-left {
+            transform: translateX(-50px);
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+
+        /* Bio Section */
+        .bio-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background-color: #f5f3f0;
+        }
+
+        .bio-container {
+            max-width: 1200px;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .bio-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .bio-title {
+            font-size: 5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .bio-subtitle {
+            font-size: 4rem;
+            font-style: italic;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            color: #999;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            background-color: #e8e6e3;
+        }
+
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            text-align: center;
+             color: #666;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 1s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: #666;
+            letter-spacing: 0.2em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            font-size: 1.1rem;
+            padding: 0.8rem 0;
+            color: #666;
+            border-bottom: 1px solid #e8e6e3;
+            transition: padding-left 0.3s ease, color 0.3s ease;
+        }
+
+        .skill-category li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-category li:hover {
+            padding-left: 1rem;
+            color: #333;
+        }
+
+        /* Stagger animation delays */
+        .skill-category:nth-child(1).visible {
+            transition-delay: 0.2s;
+        }
+
+        .skill-category:nth-child(2).visible {
+            transition-delay: 0.4s;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background-color: #d4d1cc;
+        }
+
+        .contact-container {
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .github-link {
+            display: inline-block;
+            font-size: 1.2rem;
+            color: #333;
+            text-decoration: none;
+            padding: 1rem 3rem;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .github-link:hover {
+            background-color: #333;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+
+            .bio-title, .section-title {
+                font-size: 3.5rem;
+            }
+
+            .bio-subtitle {
+                font-size: 3rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>
+            <span class="first-name">Ines</span>
+            <span class="last-name">SEKFALI</span>
+        </h1>
+        <p class="subtitle">Portfolio</p>
+    </section>
+
+    <!-- Bio Section -->
+    <section class="bio-section">
+        <div class="bio-container">
+            <div class="bio-content scroll-animate animate-left">
+                <h2 class="bio-title">Bio</h2>
+                <p class="bio-subtitle">GRAPHY</p>
+                <p class="bio-text">
+                    I am a third-year AI student at ENSIA. I'm passionate about AI, web development, and teamwork projects. I thrive on creating innovative solutions and continuously expanding my technical knowledge to tackle real-world challenges.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="skills-container">
+            <h2 class="section-title scroll-animate">Skills & Expertise</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category scroll-animate">
+                    <!-- <h3 class="grid-title">Technical Skills</h3> -->
+                    <ul>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>HTML & CSS</li>
+                        <li>Git & GitHub</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category scroll-animate">
+                    <!-- <h3 class="grid-title">Languages</h3> -->
+                    <ul>
+                        <li>Arduino</li>
+                        <li>C++</li>
+                        <li>OOP</li>
+                        <li>web Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container scroll-animate">
+            <h2 class="contact-title">Let's Connect</h2>
+            <a href="https://github.com/ines-sekfali" target="_blank" class="github-link">Visit My GitHub</a>
+        </div>
+    </section>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all elements with scroll-animate class
+            const scrollElements = document.querySelectorAll('.scroll-animate');
+
+            // Function to check if element is in viewport
+            const elementInView = (el, offset = 100) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= 
+                    (window.innerHeight || document.documentElement.clientHeight) - offset
+                );
+            };
+
+            // Function to add visible class
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+
+            // Function to handle scroll event
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 100)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+
+            // Listen for scroll events
+            window.addEventListener('scroll', handleScrollAnimation);
+            
+            // Initial check on page load
+            handleScrollAnimation();
+        });
+    </script>
+</body>
+</html>
