@@ -4,7 +4,7 @@
 
 | Name | GitHub Username |
 |------|------------------|
-| Djabir Houaria | — |
+| Djabir Houaria | [houaria617](https://github.com/houaria617) |
 | Haddoud Mehdi | [MehdiHaddoud701](https://github.com/MehdiHaddoud701) |
 | Sekfali Ines | [Ines-Sekfali](https://github.com/Ines-Sekfali) |
 | Meriche Yasmine | [yasminemeriche](https://github.com/yasminemeriche) |
